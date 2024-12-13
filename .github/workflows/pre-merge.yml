@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
+      with: 
+        python-version: 3.9
 
     - name: Install dependencies
       run: |
@@ -24,9 +24,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run lint checks
-      run: |
-        pylint your_code_directory/
+      run: pylint .
 
     - name: Run tests
-      run: |
-        pytest
+      run: pytest tests/ || exit 1
