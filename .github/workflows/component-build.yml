@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: 3.9
 
     - name: Install dependencies
       run: |
@@ -24,8 +24,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run backend tests
-      run: |
-        pytest tests/backend_tests/
+      run: pytest tests/backend_tests/
 
     - name: Build the backend
-      run: |
+      run: flask run --host=0.0.0.0 --port=3000
