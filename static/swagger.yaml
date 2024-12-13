@@ -1,0 +1,141 @@
+openapi: 3.0.0
+info:
+  title: "Flask API Testing"
+  description: "API definitions for testing Flask"
+  version: "1.0.0"
+  contact:
+    name: "Khalid"
+    url: "https://www.example.com"
+    email: "khalid@example.com"
+servers:
+  - url: "http://localhost:3000"
+    description: "Local development server"
+paths:
+  /library/Books:
+    get:
+      summary: "Get all books"
+      operationId: "getBooks"
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    Title:
+                      type: "string"
+                    Author:
+                      type: "string"
+                    Publish Year:
+                      type: "integer"
+    post:
+      summary: "Add a new book"
+      operationId: "addBook"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                Title:
+                  type: "string"
+                Author:
+                  type: "string"
+                Publish Year:
+                  type: "integer"
+      responses:
+        '201':
+          description: "Book added successfully"
+  /library/Books/{isbn}:
+    get:
+      summary: "Get a book by ISBN"
+      operationId: "getBookByIsbn"
+      parameters:
+        - name: "isbn"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Book found"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  Title:
+                    type: "string"
+                  Author:
+                    type: "string"
+                  Publish Year:
+                    type: "integer"
+        '404':
+          description: "Book not found"
+    put:
+      summary: "Edit an existing book"
+      operationId: "editBook"
+      parameters:
+        - name: "isbn"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                Title:
+                  type: "string"
+                Author:
+                  type: "string"
+                Published Year:
+                  type: "integer"
+      responses:
+        '200':
+          description: "Book updated successfully"
+    delete:
+      summary: "Delete a book by ISBN"
+      operationId: "deleteBook"
+      parameters:
+        - name: "isbn"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '204':
+          description: "Book deleted"
+  /library/search:
+    get:
+      summary: "Search books by author"
+      operationId: "searchBooks"
+      parameters:
+        - name: "Author"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Books found"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    Title:
+                      type: "string"
+                    Author:
+                      type: "string"
+                    Publish Year:
+                      type: "integer"

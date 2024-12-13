@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "500b8eaa-4520-42a0-a5ae-06c98162c3fd",
+		"name": "Flask API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39064248",
+		"_collection_link": "https://www.postman.com/khalidua/workspace/flask/collection/39064248-500b8eaa-4520-42a0-a5ae-06c98162c3fd?action=share&source=collection_link&creator=39064248"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "mysecrettoken"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/library/Books"
+			},
+			"response": []
+		},
+		{
+			"name": "Book by ISBN",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "mysecrettoken"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/library/Books/9781"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "mysecrettoken"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Title\": \"The New Book\",\r\n  \"Author\": \"Khalid Mohamed\",\r\n  \"Publish Year\": 2024\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/library/Books"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "mysecrettoken"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Title\": \"Updated Book Title\",\r\n  \"Author\": \"Updated Author Name\",\r\n  \"Published Year\": \"2025\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/library/Books/9785"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "mysecrettoken"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/library/Books/9786"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "mysecrettoken"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/library/search?Author=Naguib Mahfouz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"library",
+						"search"
+					],
+					"query": [
+						{
+							"key": "ISBN",
+							"value": "9781",
+							"disabled": true
+						},
+						{
+							"key": "Author",
+							"value": "Naguib Mahfouz"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
