@@ -53,4 +53,4 @@ def test_search_books_by_author(client):
 def test_search_books_by_year(client):
     response = client.get('/library/search?Published%20Year=2002')
     assert response.status_code == 200
-    assert b"Bayn al-Qasrayn" in response.data
+    assert b"Imarat Yaqubian" in response.data
