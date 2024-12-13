@@ -19,7 +19,7 @@ This is an API Flask project which allows to add, update, delete, view all and s
 ### Build and Run the Docker Container
 
 1. Clone the repository to your local machine.
-
+   ```bash
    git clone https://github.com/Khalidua/library-management-api.git
    cd library-management-api
 
