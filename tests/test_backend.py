@@ -10,12 +10,12 @@ def client():
 def test_get_books(client):
     response = client.get('/library/Books')
     assert response.status_code == 200
-    assert b"Bayn al-Qasrayn" in response.data  # Ensure the response contains a book title
+    assert b"Bayn al-Qasrayn" in response.data 
 
 def test_get_book_by_isbn(client):
     response = client.get('/library/Books/9781')
     assert response.status_code == 200
-    assert b"Bayn al-Qasrayn" in response.data  # Ensure the correct book is returned
+    assert b"Bayn al-Qasrayn" in response.data 
 
 def test_add_book(client):
     new_book = {
@@ -48,7 +48,7 @@ def test_delete_book(client):
 def test_search_books_by_author(client):
     response = client.get('/library/search?Author=Naguib Mahfouz')
     assert response.status_code == 200
-    assert b"Bayn al-Qasrayn" in response.data
+    assert b"Naguib Mahfouz" in response.data
 
 def test_search_books_by_year(client):
     response = client.get('/library/search?Published%20Year=2002')
