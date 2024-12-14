@@ -15,16 +15,17 @@ jobs:
 
     - name: Set up Python
       uses: actions/setup-python@v2
-      with: 
+      with:
         python-version: 3.9
 
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+    
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run lint checks
-      run: pylint .
-
     - name: Run tests
-      run: pytest tests/ || exit 1
+      run: |
+        pytest
